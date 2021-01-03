@@ -1,0 +1,48 @@
+Data science = Statistics
+ML = Math + Scala + Databases + Distributed systems + Cloud
+Web = SPA + Databases
+CS = Algorithms & Data Structures + Compilers + Databases + Software design + Networks + Cryptography + Operating Systems
+
+::Order::
+TF Deployment
+NLP
+GAN
+Medicine
+
+Programming languages
+Computer from scratch 
+
+Algorithms
+Scala
+Dockers and Kubernets
+
+Fastai Computational Linear Algebra
+Fastai Deep Learning
+Fastai Deep Learning Foundations
+Fastai NLP
+Fastai Ethics
+
+Advanced Data Science IBM
+Data Warehousing
+Advanced Machine Learning
+
+PGM
+Bayesian statistics
+Design of Experiments
+
+Analysis of Algorithms 
+Analytical Combinatorics
+Game Theory
+
+Differential Equations
+Vector calculus
+Statistical Mechanics
+Numerical Methods using python
+
+::NOW::
+Italian
+USACO
+React
+Linear Algebra
+DL
+

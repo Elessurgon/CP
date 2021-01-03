@@ -1,0 +1,98 @@
+asterisk = important 
+at the rate = no certificate
+Dollar = very powerful
+
+
+--COURSERA--
+__Programming__
+Scala Functional programming - 5  *$
+Software design and architecture - 4 *
+
+Big Data - 4 *$
+Google cloud - 4 $*
+Data warehousing for business intelligence - 4 *$
+
+Reinforcement Learning - 4 *
+Deep learning - 5 *$
+Advanced Machine learning - 7 
+
+IBM cybersecurity analyst - 8
+IBM Advanced DS - 8
+---
+Machine learning *$
+Competitive Programmer's Core Skills
+
+__EZ__
+Django - 4 
+Mastering software design using R - 4
+MangoDB
+React & ReactNative & Ecosystem $
+Kotlin for java developers 
+
+
+__Math__
+Bayesian statistics - 3 *$
+Probabilistic graph models - 3 *$
+
+Combinatorics - 2 @*$
+Discrete optimization - 3 
+Approximation algorithms - 3
+Game theory - 2
+
+Design of experiments - 4 
+Advanced linear models - 2 *
+Genomic data science - 4
+---
+Analysis of algorithms @
+Introduction to mathematical thinking
+Introduction to logic $
+Differential equtions for engineers $
+Introduction to numerial analysis $
+Improving your statistical inferences 
+Stocastic process $
+Econometrics: methods and applications 
+Introduction to complex analysis $
+Introduction to Formal Concept Analysis 
+Games without Chance: Combinatorial Game Theory
+Introduction to Galois Theory
+Jacobi modular forms
+---
+Statistical Mechanics: Algorithms and Computations $
+
+Geometric Algorithms
+Genomic algorithms
+Algorithms for DNA Sequencing
+I/O-efficient algorithms
+
+
+
+--MIT-- @
+
+Structure and interpretation of computer programs $
+Blockchain and Money
+Computation structures
+Artificial intelligence 
+Applied category theory
+
+Linear algebra (Wolfram)
+Computational linear algebra (fast.ai) *$
+Category Theory (Youtube)
+
+Linear algebra *$
+Differential Equations $
+Mathematics of big data and machine learning $
+
+Introduction to algorithms $
+Intorduciton to competitive programming
+Design and analysis of algorithms
+Advanced algorithms
+Advanced Data structures
+
+
+--BOOKS--
+
+Practical Common lisp *$
+Clojure for the brave and the bold
+Writing an interpreter using Go $
+
+
