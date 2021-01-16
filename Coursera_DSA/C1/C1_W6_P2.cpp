@@ -49,27 +49,36 @@ unsigned long long factorial(int n) {
 }
 
 void solve() {
-	ll w, n;
-	cin >> w >> n;
-	vl a(n + 1);
-	REP(i, 1, n) {
+	ll n;
+	cin >> n;
+	vl a(n);
+	ll sum = 0;
+	REP(i, 0,  n - 1) {
 		cin >> a[i];
+		sum += a[i];
 	}
-
-	vvl dp(w + 1, vector<ll>(n + 1));
-	REP(i, 1, n) {
-		REP(weight, 1, w) {
-			dp[weight][i] = dp[weight][i - 1];
-			if (a[i] <= weight) {
-				ll val = dp[weight - a[i]][i - 1] + a[i];
-				if (dp[weight][i] < val) {
-					dp[weight][i] = val;
+	ll w = sum / 3;
+	int dp[(1 << n)];
+	sort(all(a));
+	if (sum % 3 != 0 || n < 3 || a[n - 1] > sum / 3) cout << 0;
+	else {
+		for(int i = 0; i < (1 << n); i++) {
+			dp[i] = -1;
+		}	
+		dp[0] = 0;
+		for (int mask = 0; mask < (1 << n); mask++) {
+			if (dp[mask] == -1) continue;
+			for(int i = 0; i < n; i++) {
+				if (!(mask & (1 << i)) && dp[mask] + a[i] <= w) {
+					dp[mask | (1 << i)] = (dp[mask] + a[i]) % w; 
 				}
 			}
-		}			
+		}
+		if (dp[(1 << n) - 1] == 0) cout << 1;
+		else cout << 0;
+		cout << endl;
 	}
-	cout << dp[w][n];
-	
+	 
 	
 }	
 
