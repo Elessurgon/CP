@@ -122,21 +122,7 @@ void min_heap() {
 }
 
 void solve() {
-	// ll ans = 0;
-	// ll a, b, k;
-	// cin >> a >> b >> k;
-	// vpl ps(k);
-	// REP(i, 0, k - 1) cin >> ps[i].f;
-	// REP(i, 0, k - 1) cin >> ps[i].s;
-	// sort(all(ps));
-	// REP(i, 0, k - 1) {
-	// 	REP_REV(j, k - 1, i) {
-	// 			if (ps[i].f == ps[j].f || ps[i].s == ps[j].s) continue;
-	// 			else ans++;
-	// 	}
-	// 	// ans += k - ind - 1;
-	// }
-	// cout << ans << endl;
+	
 }	
 
 int main() {

@@ -48,82 +48,6 @@ unsigned long long factorial(int n) {
     return f;
 }
 
-vl a;
-ll ans = 0;
-vpl ap;
-ll parent(ll i) { return (i - 1) / 2; }
-ll left(ll i) { return 2 * i + 1; }
-ll right(ll i) { return 2 * i + 2; }
-
-void siftup(ll i) {
-	if (parent(i) >= 0 && a[parent(i)] > a[i]) {
-		ans++;
-		ap.pb({parent(i), i});
-		swap(a[parent(i)], a[i]);
-		if (parent(i) > 0) siftup(parent(i));
-	}
-	
-}
-
-void siftdown(ll i) {
-	ll len = sz(a);
-	bool l = false;
-	ll index = i;
-	if (left(i) < len && a[i] > a[left(i)]) {
-		l = true;
-		ans++;
-		ap.pb({i, left(i)});
-		index = left(i);
-	}
-	if (right(i) < len && a[i] > a[right(i)]) {
-		if (l) {
-			ans--;
-			ap.pop_back();
-		}
-		ans++;
-		ap.pb({i, right(i)});
-		index = right(i);
-	} 
-
-	if (i != index) {
-		swap(a[i], a[index]);
-		siftdown(index);
-	}
-}
-
-bool isMinHeap(ll i) {
-	
-	if (left(i) >= sz(a) && right(i) >= sz(a)) return true;
-	if (left(i) < sz(a) && a[left(i)] < a[i]) {
-		return false;
-	}
-	if (right(i) < sz(a) && a[right(i)] < a[i]) {
-		return false;
-	}
-	return isMinHeap(left(i)) && isMinHeap(right(i));
-}
-
-void min_heap() {
-	ll n;
-	cin >> n;
-	REP(i, 0, n - 1) {
-		ll x; cin >> x;
-		a.pb(x);
-		// siftup(i);
-	}
-	while(isMinHeap(0) == false) {
-		REP_REV(i, n - 1, 0) {
-			siftup(i);
-		}
-	}
-	cout << ans << endl;
-	REP(i, 0, ans - 1) {
-		cout << ap[i].f << " " << ap[i].s << endl;
-	}
-}
-
-
-
 void solve() {
 	ll n, m;
 	cin >> n >> m;
@@ -152,7 +76,6 @@ void solve() {
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
-	// min_heap();
 	// freopen("split.in", "r", stdin);
 	// freopen("split.out", "w", stdout);
 	// ll t; cin >> t;
