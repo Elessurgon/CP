@@ -219,9 +219,12 @@ int main() {
     cin.tie(0);
     // freopen("guess.in", "r", stdin);
     // freopen("guess.out", "w", stdout);
-    // ll t;
-    // cin >> t;
-    // while (t--)
-    solve();
+    ll i = 1;
+    while (true) {
+        cout << "i = " << i;
+        test();
+        i++;
+    }
+    // solve();
     return 0;
 }
