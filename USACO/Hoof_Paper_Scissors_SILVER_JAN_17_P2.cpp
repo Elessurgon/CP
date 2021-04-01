@@ -1,0 +1,120 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define REP(i, a, b) for (ll i = a; i <= b; i++)
+#define REP_REV(i, a, b) for (ll i = a; i >= b; i--)
+#define debug(x) cerr << #x << " is " << x << endl;
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define sz(x) (int)(x).size()
+#define endl "\n"
+
+#define pb push_back
+#define rsz resize
+#define f first
+#define s second
+#define mp make_pair
+
+using ll = int64_t;
+using vi = vector<int>;
+using vvi = vector<vector<int>>;
+using vc = vector<char>;
+using ull = unsigned int64_t;
+using pi = pair<int, int>;
+using vl = vector<int64_t>;
+using pl = pair<int64_t, int64_t>;
+using vpl = vector<pair<int64_t, int64_t>>;
+using msl = map<string, int64_t>;
+using vvl = vector<vector<int64_t>>;
+
+const ll MOD = 1e9 + 7;
+const int INF = int(1e9);
+
+bool isPrime(ll n) {
+    if (n == 1) return false;
+    if (n == 2) return true;
+    for (ll i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+unsigned long long factorial(int n) {
+    const unsigned int M = MOD;
+    unsigned long long f = 1;
+    for (int i = 1; i <= n; i++)
+        f = (f * i) % M;
+    return f;
+}
+
+ll expon(ll a, ll b, ll m = MOD) {
+    ll res = 1;
+    a %= m;
+    while (b > 0) {
+        if (b & 1)
+            res = res * a % m;
+        a = a * a % m;
+        b >>= 1;
+    }
+    return res;
+}
+
+ll blocks_req(ll num) {
+    return num * (num + 1) / 2;
+}
+
+void solve() {
+    ll n;
+    cin >> n;
+    vector<char> a(n);
+    vector<bool> p(n), h(n), s(n);
+    vector<ll> pp(n + 1), ph(n + 1), ps(n + 1);
+    ll P = 0, H = 0, S = 0;
+    REP(i, 0, n - 1) {
+        cin >> a[i];
+        p[i] = a[i] == 'P';
+        h[i] = a[i] == 'H';
+        s[i] = a[i] == 'S';
+        P += a[i] == 'P';
+        S += a[i] == 'S';
+        H += a[i] == 'H';
+        pp[i + 1] = p[i] + pp[i];
+        ph[i + 1] = h[i] + ph[i];
+        ps[i + 1] = s[i] + ps[i];
+    }
+    ll ans = 0;
+    REP(i, 1, n) { ans = max(ans, pp[i] + S - ps[i]); }
+    REP(i, 1, n) { ans = max(ans, pp[i] + H - ph[i]); }
+    REP(i, 1, n) { ans = max(ans, ps[i] + P - pp[i]); }
+    REP(i, 1, n) { ans = max(ans, ps[i] + H - ph[i]); }
+    REP(i, 1, n) { ans = max(ans, ph[i] + P - pp[i]); }
+    REP(i, 1, n) { ans = max(ans, ph[i] + S - ps[i]); }
+    cout << ans;
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+#ifdef _DEBUG
+    freopen("input.txt", "r", stdin);
+    int tt = clock();
+#endif
+
+    // freopen("hps.in", "r", stdin);
+    // freopen("hps.out", "w", stdout);
+
+    // ll t;
+    // cin >> t;
+    // while (t--)
+    solve();
+
+#ifdef _DEBUG
+    cerr << "\nTIME = " << clock() - tt << endl;
+    tt = clock();
+#endif
+    return 0;
+}
