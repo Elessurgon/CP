@@ -21,6 +21,7 @@ using namespace std;
 
 using ll = int64_t;
 using vb = vector<bool>;
+using vvb = vector<vector<bool>>;
 using vi = vector<int>;
 using vvi = vector<vector<int>>;
 using vc = vector<char>;
@@ -34,6 +35,9 @@ using vvl = vector<vector<int64_t>>;
 
 const ll MOD = 1e9 + 7;
 const ll INF = numeric_limits<ll>::max();
+vl dx = {0, 0, 1, -1};
+vl dy = {1, -1, 0, 0};
+vc dir = {'R', 'L', 'D', 'U'};
 
 vector<string> vec_splitter(string s) {
     s += ',';
