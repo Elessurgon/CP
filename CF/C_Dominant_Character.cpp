@@ -124,20 +124,23 @@ void solve() {
         }
     }
     REP(i, 0, n - 3) {
-        if (s[i] == s[i + 2] && s[i] == 'a') {
+        string x = s.substr(i, 3);
+        if (x == "aba" || x == "aca") {
             cout << 3 << endl;
             return;
         }
     }
     REP(i, 0, n - 4) {
-        if (s[i] == s[i + 3] && s[i] == 'a' && s[i + 1] != s[i + 2]) {
+        string x = s.substr(i, 4);
+        if (x == "abca" || x == "acba") {
             cout << 4 << endl;
             return;
         }
     }
 
     REP(i, 0, n - 7) {
-        if (s[i] == s[i + 6] && s[i] == s[i + 3] && s[i] == 'a' && s[i + 1] == s[i + 2] && s[i + 4] == s[i + 5] && s[i + 1] != s[i + 4]) {
+        string x = s.substr(i, 7);
+        if (x == "abbacca" || x == "accabba") {
             cout << 7 << endl;
             return;
         }
