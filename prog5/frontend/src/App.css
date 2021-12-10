@@ -1,0 +1,17 @@
+.wrapper {
+  margin: 32px;
+}
+
+table {
+  margin: 32px 0;
+}
+
+.view-btn {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.inventory-details {
+  margin-top: 32px;
+}
