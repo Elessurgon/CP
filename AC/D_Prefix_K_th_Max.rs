@@ -36,21 +36,21 @@ fn solve() {
     let mut heap = BinaryHeap::new();
     for i in 0..k {
         let ele: i32 = scan.next();
-        heap.push(-ele);
+        heap.push(Reverse(ele));
     }
     let num = heap.peek().unwrap();
-    writeln!(out, "{}", -num);
+    writeln!(out, "{}", num.0);
     for i in k..n {
         let ele: i32 = scan.next();
 
         if let Some(top) = heap.peek() {
-            if -top <= ele {
-                heap.push(-ele);
+            if top.0 <= ele {
+                heap.push(Reverse(ele));
                 heap.pop();
             }
         }
         let num = heap.peek().unwrap();
-        writeln!(out, "{}", -num);
+        writeln!(out, "{}", num.0);
     }
 }
 
