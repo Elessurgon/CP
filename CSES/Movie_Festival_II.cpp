@@ -1,24 +1,24 @@
 #include <bits/stdc++.h>
-
+ 
 using namespace std;
-
+ 
 #pragma GCC target("avx")
 #pragma GCC optimize("O3")
 #pragma GCC optimize("unroll-loops")
-
+ 
 #define REP(i, a, b) for (ll i = a; i <= b; i++)
 #define REP_REV(i, a, b) for (ll i = a; i >= b; i--)
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define sz(x) (int)(x).size()
 #define endl "\n"
-
+ 
 #define pb push_back
 #define rsz resize
 #define f first
 #define s second
 #define mp make_pair
-
+ 
 using ll = int64_t;
 using vb = vector<bool>;
 using vvb = vector<vector<bool>>;
@@ -33,13 +33,13 @@ using vpl = vector<pair<int64_t, int64_t>>;
 using msl = map<string, int64_t>;
 using vvl = vector<vector<int64_t>>;
 using min_heapll = priority_queue<ll, vector<ll>, greater<ll>>;
-
+ 
 const ll MOD = 1e9 + 7;
 const ll INF = numeric_limits<ll>::max();
 vl dx = {0, 0, 1, -1};
 vl dy = {1, -1, 0, 0};
 vc dir = {'R', 'L', 'D', 'U'};
-
+ 
 vector<string> vec_splitter(string s) {
     s += ',';
     vector<string> res;
@@ -64,27 +64,24 @@ void debug_out(vector<string> args, int idx, int LINE_NUM, Head H, Tail... T) {
     cerr << args[idx] << " = " << ss.str();
     debug_out(args, idx + 1, LINE_NUM, T...);
 }
-
+ 
 #define DBG(...) debug_out(vec_splitter(#__VA_ARGS__), 0, __LINE__, __VA_ARGS__)
-
+ 
 template <class T>
 void DBGvec(vector<T> a) {
     for (T i : a) cerr << i << " ";
     cerr << endl;
 }
-template <class T>
-void DBGvec_pair(vector<T> a) {
-    for (T i : a) cerr << "{" << i.f << " " << i.s << "} ";
-    cerr << endl;
-}
+ 
 template <class T>
 void DBGmset(multiset<T> a) {
     for (T i : a) cerr << i << " ";
     cerr << endl;
 }
+ 
 template <class T>
-void DBGset(set<T> a) {
-    for (T i : a) cerr << i << " ";
+void DBGvec_pair(vector<T> a) {
+    for (T i : a) cerr << "{" << i.f << " " << i.s << "} ";
     cerr << endl;
 }
 template <class K, class P>
@@ -92,7 +89,7 @@ void DBGmap(map<K, P> a) {
     for (auto i : a) cerr << "{" << i.f << " " << i.s << "} ";
     cerr << endl;
 }
-
+ 
 bool isPrime(ll n) {
     if (n == 1) return false;
     if (n == 2) return true;
@@ -103,7 +100,7 @@ bool isPrime(ll n) {
     }
     return true;
 }
-
+ 
 unsigned long long factorial(int n) {
     const unsigned int M = MOD;
     unsigned long long f = 1;
@@ -111,7 +108,7 @@ unsigned long long factorial(int n) {
         f = (f * i) % M;
     return f;
 }
-
+ 
 ll expon(ll a, ll b, ll m = MOD) {
     ll res = 1;
     a %= m;
@@ -119,32 +116,60 @@ ll expon(ll a, ll b, ll m = MOD) {
         if (b & 1)
             res = res * a % m;
         a = a * a % m;
-
+ 
         b >>= 1;
     }
     return res;
 }
-
+ 
 void solve() {
+    ll n, k;
+    cin >> n >> k;
+    vpl a(n);
+    REP(i, 0, n - 1) {
+        cin >> a[i].f >> a[i].s;
+    }
+ 
+    sort(all(a), [](pl a, pl b) -> bool {
+        return a.s < b.s;
+    });
+ 
+    ll ans = 0;
+    multiset<ll> end;
+    REP(i, 0, k - 1) {
+        end.insert(0);
+    }
+    // DBGvec_pair(a);
+ 
+    // DBGmset(end);
+    REP(i, 0, n - 1) {
+        auto it = end.upper_bound(a[i].f);
+        if (it == end.begin()) continue;
+        end.erase(--it);
+        end.insert(a[i].s);
+        ans++;
+        // DBGmset(end);
+    }
+    cout << ans;
 }
-
+ 
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+ 
 #ifdef _DEBUG
     freopen("input.txt", "r", stdin);
     int tt = clock();
 #endif
-
-    // freopen("cardgame.in", "r", stdin);
-    // freopen("cardgame.out", "w", stdout);
-
+ 
+    // freopen("paintbarn.in", "r", stdin);
+    // freopen("paintbarn.out", "w", stdout);
+ 
     // ll t;
     // cin >> t;
     // while (t--)
     solve();
-
+ 
 #ifdef _DEBUG
     cerr << "\nTIME = " << clock() - tt << endl;
     tt = clock();
