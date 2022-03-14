@@ -32,6 +32,7 @@ using pl = pair<int64_t, int64_t>;
 using vpl = vector<pair<int64_t, int64_t>>;
 using msl = map<string, int64_t>;
 using vvl = vector<vector<int64_t>>;
+using min_heapll = priority_queue<ll, vector<ll>, greater<ll>>;
 
 const ll MOD = 1e9 + 7;
 const ll INF = numeric_limits<ll>::max();
@@ -76,6 +77,16 @@ void DBGvec_pair(vector<T> a) {
     for (T i : a) cerr << "{" << i.f << " " << i.s << "} ";
     cerr << endl;
 }
+template <class T>
+void DBGmset(multiset<T> a) {
+    for (T i : a) cerr << i << " ";
+    cerr << endl;
+}
+template <class T>
+void DBGset(set<T> a) {
+    for (T i : a) cerr << i << " ";
+    cerr << endl;
+}
 template <class K, class P>
 void DBGmap(map<K, P> a) {
     for (auto i : a) cerr << "{" << i.f << " " << i.s << "} ";
@@ -108,6 +119,7 @@ ll expon(ll a, ll b, ll m = MOD) {
         if (b & 1)
             res = res * a % m;
         a = a * a % m;
+
         b >>= 1;
     }
     return res;
@@ -125,8 +137,8 @@ int main() {
     int tt = clock();
 #endif
 
-    // freopen("paintbarn.in", "r", stdin);
-    // freopen("paintbarn.out", "w", stdout);
+    // freopen("cardgame.in", "r", stdin);
+    // freopen("cardgame.out", "w", stdout);
 
     // ll t;
     // cin >> t;
