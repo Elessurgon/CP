@@ -72,16 +72,19 @@ void DBGvec(vector<T> a) {
     for (T i : a) cerr << i << " ";
     cerr << endl;
 }
-
+template <class T>
+void DBGvec_pair(vector<T> a) {
+    for (T i : a) cerr << "{" << i.f << " " << i.s << "} ";
+    cerr << endl;
+}
 template <class T>
 void DBGmset(multiset<T> a) {
     for (T i : a) cerr << i << " ";
     cerr << endl;
 }
-
 template <class T>
-void DBGvec_pair(vector<T> a) {
-    for (T i : a) cerr << "{" << i.f << " " << i.s << "} ";
+void DBGset(set<T> a) {
+    for (T i : a) cerr << i << " ";
     cerr << endl;
 }
 template <class K, class P>
@@ -123,34 +126,6 @@ ll expon(ll a, ll b, ll m = MOD) {
 }
 
 void solve() {
-    ll n, k;
-    cin >> n >> k;
-    vpl a(n);
-    REP(i, 0, n - 1) {
-        cin >> a[i].f >> a[i].s;
-    }
-
-    sort(all(a), [](pl a, pl b) -> bool {
-        return a.s < b.s;
-    });
-
-    ll ans = 0;
-    multiset<ll> end;
-    REP(i, 0, k - 1) {
-        end.insert(0);
-    }
-    // DBGvec_pair(a);
-
-    // DBGmset(end);
-    REP(i, 0, n - 1) {
-        auto it = end.upper_bound(a[i].f);
-        if (it == end.begin()) continue;
-        end.erase(--it);
-        end.insert(a[i].s);
-        ans++;
-        // DBGmset(end);
-    }
-    cout << ans;
 }
 
 int main() {
@@ -162,8 +137,8 @@ int main() {
     int tt = clock();
 #endif
 
-    // freopen("paintbarn.in", "r", stdin);
-    // freopen("paintbarn.out", "w", stdout);
+    // freopen("cardgame.in", "r", stdin);
+    // freopen("cardgame.out", "w", stdout);
 
     // ll t;
     // cin >> t;
