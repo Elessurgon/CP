@@ -129,27 +129,16 @@ void solve() {
     ll n;
     string s;
     cin >> n >> s;
-    ll m = 0, f = 0;
     ll ans = 0;
-
-    string t = s;
-    REP(j, 2, sz(s)) {
-        REP(i, 0, sz(s) - j) {
-            string x = s.substr(i, j);
-            ll m = 0, f = 0;
-            REP(k, 0, sz(x) - 1) {
-                m += (x[k] == '0');
-                f += (x[k] == '1');
-            }
-            if (m > f) {
-                string a = "";
-                REP(k, 1, m - f) { a += '1'; }
-                s.insert(i + j - 1, a);
-            }
+    REP(i, 0, n - 1) {
+        if (i + 1 < n && s[i] == '0' && s[i + 1] == '0') {
+            ans += 2;
+        }
+        if (i + 2 < n && s[i] == '0' && s[i + 1] == '1' && s[i + 2] == '0') {
+            ans += 1;
         }
     }
-
-    cout << sz(s) - sz(t) << endl;
+    cout << ans << endl;
 }
 
 int main() {
