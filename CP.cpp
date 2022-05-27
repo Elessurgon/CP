@@ -73,6 +73,16 @@ void DBGvec(vector<T> a) {
     cerr << endl;
 }
 template <class T>
+void DBGmat(vector<vector<T>> a) {
+    for (vector<T> v : a) {
+        for (T i : v) {
+            cerr << i << " ";
+        }
+        cerr << endl;
+    }
+    cerr << endl;
+}
+template <class T>
 void DBGvec_pair(vector<T> a) {
     for (T i : a) cerr << "{" << i.f << " " << i.s << "} ";
     cerr << endl;
