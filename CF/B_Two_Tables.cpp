@@ -32,6 +32,7 @@ using pl = pair<int64_t, int64_t>;
 using vpl = vector<pair<int64_t, int64_t>>;
 using msl = map<string, int64_t>;
 using vvl = vector<vector<int64_t>>;
+using min_heapll = priority_queue<ll, vector<ll>, greater<ll>>;
 
 const ll MOD = 1e9 + 7;
 const ll INF = numeric_limits<ll>::max();
@@ -72,8 +73,28 @@ void DBGvec(vector<T> a) {
     cerr << endl;
 }
 template <class T>
+void DBGmat(vector<vector<T>> a) {
+    for (vector<T> v : a) {
+        for (T i : v) {
+            cerr << i << " ";
+        }
+        cerr << endl;
+    }
+    cerr << endl;
+}
+template <class T>
 void DBGvec_pair(vector<T> a) {
     for (T i : a) cerr << "{" << i.f << " " << i.s << "} ";
+    cerr << endl;
+}
+template <class T>
+void DBGmset(multiset<T> a) {
+    for (T i : a) cerr << i << " ";
+    cerr << endl;
+}
+template <class T>
+void DBGset(set<T> a) {
+    for (T i : a) cerr << i << " ";
     cerr << endl;
 }
 template <class K, class P>
@@ -108,52 +129,32 @@ ll expon(ll a, ll b, ll m = MOD) {
         if (b & 1)
             res = res * a % m;
         a = a * a % m;
+
         b >>= 1;
     }
     return res;
 }
 
 void solve() {
-    vvl a(102, vl(102, 0)), b(102, vl(102, 0));
-    ll na, ma, nb, mb;
+    double h, w;
+    double th, tw;
+    double x1, y1, x2, y2;
+    cin >> w >> h >> x1 >> y1 >> x2 >> y2 >> tw >> th;
 
-    cin >> na >> ma;
-
-    REP(i, 0, na - 1) {
-        REP(j, 0, ma - 1) {
-            char x;
-            cin >> x;
-            a[i][j] = (x == '1');
-        }
+    if (x2 - x1 + tw > w && y2 - y1 + th > h) {
+        cout << -1 << endl;
+        return;
     }
-    cin >> nb >> mb;
-
-    REP(i, 0, nb - 1) {
-        REP(j, 0, mb - 1) {
-            char x;
-            cin >> x;
-            b[i][j] = (x == '1');
-        }
+    double ans = 1e18;
+    if (x2 - x1 + tw <= w) {
+        ans = min(ans, max(0.0, tw - x1));
+        ans = min(ans, max(0.0, x2 - (w - tw)));
     }
-
-    ll mx = 0, lx = 0, ly = 0;
-    REP(x, -50, 50) {
-        REP(y, -50, 50) {
-            ll s = 0;
-            REP(i, 0, na - 1) {
-                REP(j, 0, ma - 1) {
-                    if (i + x >= 0 && i + x < nb && j + y < mb && j + y >= 0)
-                        s += a[i][j] * b[i + x][j + y];
-                }
-            }
-            if (s > mx) {
-                mx = s;
-                lx = x, ly = y;
-            }
-        }
+    if (y2 - y1 + th <= h) {
+        ans = min(ans, max(0.0, th - y1));
+        ans = min(ans, max(0.0, y2 - (h - th)));
     }
-
-    cout << lx << " " << ly;
+    cout << setprecision(15) << ans << endl;
 }
 
 int main() {
@@ -165,13 +166,13 @@ int main() {
     int tt = clock();
 #endif
 
-    // freopen("paintbarn.in", "r", stdin);
-    // freopen("paintbarn.out", "w", stdout);
+    // freopen("cardgame.in", "r", stdin);
+    // freopen("cardgame.out", "w", stdout);
 
-    // ll t;
-    // cin >> t;
-    // while (t--)
-    solve();
+    ll t;
+    cin >> t;
+    while (t--)
+        solve();
 
 #ifdef _DEBUG
     cerr << "\nTIME = " << clock() - tt << endl;
