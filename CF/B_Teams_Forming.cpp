@@ -142,19 +142,11 @@ void solve() {
         cin >> a[i];
     }
     sort(all(a));
-    ll cnt = 0;
-    ll i = 0, j = n - 1;
-    bool f = true;
-    while (cnt != n - 1) {
-        if (f) {
-            j--;
-        } else {
-            i++;
-        }
-        f = !f;
-        cnt++;
+    ll ans = 0;
+    for (ll i = 0; i < n; i += 2) {
+        ans += a[i + 1] - a[i];
     }
-    cout << (f ? a[i] : a[j]);
+    cout << ans;
 }
 
 int main() {

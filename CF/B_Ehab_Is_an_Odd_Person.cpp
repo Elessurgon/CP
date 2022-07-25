@@ -138,23 +138,17 @@ void solve() {
     ll n;
     cin >> n;
     vl a(n);
+    ll odd = 0;
     REP(i, 0, n - 1) {
         cin >> a[i];
+        odd += (a[i] % 2 == 1);
     }
-    sort(all(a));
-    ll cnt = 0;
-    ll i = 0, j = n - 1;
-    bool f = true;
-    while (cnt != n - 1) {
-        if (f) {
-            j--;
-        } else {
-            i++;
-        }
-        f = !f;
-        cnt++;
+    if (odd > 0 && odd < n) {
+        sort(all(a));
     }
-    cout << (f ? a[i] : a[j]);
+    REP(i, 0, n - 1) {
+        cout << a[i] << " ";
+    }
 }
 
 int main() {

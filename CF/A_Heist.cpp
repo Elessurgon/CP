@@ -141,20 +141,12 @@ void solve() {
     REP(i, 0, n - 1) {
         cin >> a[i];
     }
+    ll ans = 0;
     sort(all(a));
-    ll cnt = 0;
-    ll i = 0, j = n - 1;
-    bool f = true;
-    while (cnt != n - 1) {
-        if (f) {
-            j--;
-        } else {
-            i++;
-        }
-        f = !f;
-        cnt++;
+    REP(i, 1, n - 1) {
+        ans += a[i] - a[i - 1] - 1;
     }
-    cout << (f ? a[i] : a[j]);
+    cout << ans;
 }
 
 int main() {

@@ -135,26 +135,27 @@ ll expon(ll a, ll b, ll m = MOD) {
 }
 
 void solve() {
-    ll n;
-    cin >> n;
+    ll n, k;
+    cin >> n >> k;
     vl a(n);
     REP(i, 0, n - 1) {
         cin >> a[i];
     }
     sort(all(a));
-    ll cnt = 0;
-    ll i = 0, j = n - 1;
-    bool f = true;
-    while (cnt != n - 1) {
-        if (f) {
-            j--;
+    if (k == 0) {
+        if (a[0] > 1) {
+            cout << 1;
         } else {
-            i++;
+            cout << -1;
         }
-        f = !f;
-        cnt++;
+    } else if (k == n) {
+        cout << a[n - 1];
+    } else {
+        if (a[k - 1] == a[k])
+            cout << -1;
+        else
+            cout << a[k - 1];
     }
-    cout << (f ? a[i] : a[j]);
 }
 
 int main() {

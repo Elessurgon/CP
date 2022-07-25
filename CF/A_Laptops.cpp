@@ -137,24 +137,26 @@ ll expon(ll a, ll b, ll m = MOD) {
 void solve() {
     ll n;
     cin >> n;
-    vl a(n);
+    map<ll, ll> m;
     REP(i, 0, n - 1) {
-        cin >> a[i];
+        ll p, q;
+        cin >> p >> q;
+        m[p] = max(m[p], q);
     }
-    sort(all(a));
-    ll cnt = 0;
-    ll i = 0, j = n - 1;
-    bool f = true;
-    while (cnt != n - 1) {
-        if (f) {
-            j--;
-        } else {
-            i++;
+    vpl a;
+    for (auto x : m) {
+        a.pb({x.f, x.s});
+    }
+    sort(all(a), [](pl a, pl b) {
+        return a.s < b.s;
+    });
+    REP(i, 0, sz(a) - 2) {
+        if (a[i].f > a[i + 1].f) {
+            cout << "Happy Alex";
+            return;
         }
-        f = !f;
-        cnt++;
     }
-    cout << (f ? a[i] : a[j]);
+    cout << "Poor Alex";
 }
 
 int main() {
