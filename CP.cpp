@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 
+#include <ext/pb_ds/assoc_container.hpp>
+
 using namespace std;
+using namespace __gnu_pbds;
 
 #pragma GCC target("avx")
 #pragma GCC optimize("O3")
@@ -33,6 +36,7 @@ using vpl = vector<pair<int64_t, int64_t>>;
 using msl = map<string, int64_t>;
 using vvl = vector<vector<int64_t>>;
 using min_heapll = priority_queue<ll, vector<ll>, greater<ll>>;
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> indexed_set;
 
 const ll MOD = 1e9 + 7;
 const ll INF = numeric_limits<ll>::max();
@@ -129,7 +133,6 @@ ll expon(ll a, ll b, ll m = MOD) {
         if (b & 1)
             res = res * a % m;
         a = a * a % m;
-
         b >>= 1;
     }
     return res;
@@ -150,10 +153,10 @@ int main() {
     // freopen("cardgame.in", "r", stdin);
     // freopen("cardgame.out", "w", stdout);
 
-    // ll t;
-    // cin >> t;
-    // while (t--)
-    solve();
+    ll t;
+    cin >> t;
+    while (t--)
+        solve();
 
 #ifdef _DEBUG
     cerr << "\nTIME = " << clock() - tt << endl;
