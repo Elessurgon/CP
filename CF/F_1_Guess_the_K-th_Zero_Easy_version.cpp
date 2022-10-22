@@ -138,38 +138,34 @@ ll expon(ll a, ll b, ll m = MOD) {
     return res;
 }
 
-bool f(double t, vector<double> a, vector<double> v) {
-    vector<pair<double, double>> x;
-    double l = 0.0, r = 1e9;
-    REP(i, 0, sz(a) - 1) {
-        l = max(a[i] - (t * v[i]), l);
-        r = min(a[i] + (t * v[i]), r);
-    }
-    return l <= r;
-}
-
 void solve() {
-    ll n;
-    cin >> n;
-    vector<double> a(n), v(n);
-    REP(i, 0, n - 1) {
-        cin >> a[i];
-    }
-    REP(i, 0, n - 1) {
-        cin >> v[i];
-    }
-    double l = 0.0, r = 1e9;
-    while (l + 1e-7 < r) {
-        // DBG(l, r);
-        double m = (l + r) / 2.0;
-        if (f(m, a, v)) {
+    ll n, t, k;
+    cin >> n >> t >> k;
+    ll l = 1, r = n;
+    ll sum = 0;
+    ll cnt = 0;
+    bool ok = true;
+    ll m = 0;
+    while (l < r) {
+        m = (l + r) / 2;
+        cout << "? " << l << " " << m << endl;
+        cout.flush();
+        cin >> sum;
+
+        ll z = (m - l + 1) - sum;
+
+        if (k <= z) {
             r = m;
+            ok = false;
         } else {
-            l = m;
+            l = m + 1;
+            ok = true;
+            k -= z;
         }
     }
 
-    cout << setprecision(20) << r << endl;
+    cout << "! " << l << endl;
+    cout.flush();
 }
 
 int main() {
