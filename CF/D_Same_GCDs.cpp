@@ -139,10 +139,7 @@ ll expon(ll a, ll b, ll m = MOD) {
     return res;
 }
 
-void solve() {
-    ll a, m;
-    cin >> a >> m;
-    ll n = m / __gcd(a, m);
+ll phi(ll n) {
     ll result = n;
     for (ll i = 2; i * i <= n; i++) {
         if (n % i == 0) {
@@ -153,7 +150,14 @@ void solve() {
     }
     if (n > 1)
         result -= result / n;
-    cout << result << endl;
+    return result;
+}
+
+void solve() {
+    ll a, m;
+    cin >> a >> m;
+    ll ans = phi(m / __gcd(a, m));
+    cout << ans << endl;
 }
 
 int main() {
