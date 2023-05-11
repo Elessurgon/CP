@@ -147,8 +147,8 @@ void solve() {
     REP(i, 0, n - 1) {
         cin >> a[i];
     }
-    REP(i, 1, n - 2) {
-        if (a[i - 1] >= a[i] && a[i] >= a[i + 1]) {
+    REP(i, 2, n - 1) {
+        if (a[i - 2] >= a[i - 1] && a[i - 1] >= a[i]) {
             p[i] = p[i - 1] + 1;
         } else {
             p[i] = p[i - 1];
@@ -162,7 +162,7 @@ void solve() {
         if (l == r) {
             cout << 1 << endl;
         } else
-            cout << max((r - (l - 1)) - (p[r - 1] - p[l]), 2LL) << endl;
+            cout << max((r - (l - 1)) - (p[r] - p[l + 1]), 2LL) << endl;
     }
 }
 
