@@ -1,7 +1,12 @@
-#[allow(unused_imports)]
-#[allow(dead_code)]
-use std::cmp::{max, min};
+#![allow(unused_imports)]
+#![allow(dead_code)]
+#![allow(unused)]
+
+use std::cmp::{max, min, Reverse};
+use std::collections::{BTreeMap, BTreeSet};
+use std::io::{self, prelude::*};
 use std::io::{stdin, stdout, BufWriter, Write};
+use std::str;
 // const BITS: usize = 19;
 // const INF: i64 = 0x3f3f3f3f;
 
@@ -22,7 +27,19 @@ impl Scanner {
     }
 }
 
+fn solve() {
+    let mut scan = Scanner::default();
+    let out = &mut BufWriter::new(stdout());
+    let n: i64 = scan.next();
+}
+
 fn main() {
     let mut scan = Scanner::default();
     let out = &mut BufWriter::new(stdout());
+
+    // let t: i64 = scan.next();
+    // for _ in 0..t {
+    //     solve();
+    // }
+    solve();
 }
