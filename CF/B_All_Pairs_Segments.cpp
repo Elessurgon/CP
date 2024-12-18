@@ -147,15 +147,14 @@ void solve() {
         cin >> a[i];
     }
     ll num = 0;
-    REP(i, 0, n - 2) {
-        num += (n - i - 1);
-        // DBG(n, num, a[i + 1] - a[i] - 1);
-        m[num]++;
-        num -= i;
-        // DBG(n, num, a[i + 1] - a[i] - 1);
-        m[num] += a[i + 1] - a[i] - 1;
+    REP(i, 0, n - 1) {
+        ll l = i + 1;
+        ll r = n - i - 1;
+        if (i + 1 < n) {
+            m[l * r] += max(0LL, a[i + 1] - a[i] - 1);
+        }
+        m[l * r + i]++;
     }
-    m[num]++;
     REP(i, 0, q - 1) {
         ll x;
         cin >> x;
