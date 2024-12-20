@@ -153,13 +153,16 @@ void solve() {
     cin >> s;
 
     ll l = 0, r = n - 1;
-    
     while (l < r) {
         while(l < n && s[l] == 'R') l++;
         while(r >= 0 && s[r] == 'L') r--;
-        ans += p[r + 1] - p[l];
-        l++;
-        r--;
+        if (l < r) {
+            ans += (p[r + 1] - p[l]);
+            l++;
+            r--;
+        }
+    
+        
     }
     
 
